@@ -1,3 +1,5 @@
+#include "Arduino.h"
+
 class LedService {
 private:
 	static const int LED_PIN = 13;
@@ -20,13 +22,6 @@ private:
 	}
 
 public:
-	LedService::LedService()
-	{
-	}
-
-	LedService::~LedService()
-	{
-	}
 
 	/*
 	* Makes blink a led
