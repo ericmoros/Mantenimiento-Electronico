@@ -55,3 +55,33 @@ console.log('vReqC_rc5: ' + vReqC_rc5)
 var vReqC_rc6 = vReqC
 console.log('vReqC_rc6: ' + vReqC_rc6)
 console.groupEnd()
+
+console.group('voltios/resistencia')
+var ira1 = vReqA_ra1 / ra1
+console.log('ira1: ' + ira1)
+var irb2 = vReqB_rb2 / rb2
+console.log('irb2: ' + irb2)
+var irb3 = vReqB_rb3 / rb3
+console.log('irb3: ' + irb3)
+var irc4 = vReqC_rc4 / rc4
+console.log('irc4: ' + irc4)
+var irc5 = vReqC_rc5 / rc5
+console.log('irc5: ' + irc5)
+var irc6 = vReqC_rc6 / rc6
+console.log('irc6: ' + irc6)
+console.groupEnd()
+
+console.group('voltios * intensidad')
+var wra1 = vReqA_ra1 * ira1
+console.log('wra1: ' + wra1)
+var wrb2 = vReqB_rb2 * irb2
+console.log('wrb2: ' + wrb2)
+var wrb3 = vReqB_rb3 * irb3
+console.log('wrb3: ' + wrb3)
+var wrc4 = vReqC_rc4 * irc4
+console.log('wrc4: ' + wrc4)
+var wrc5 = vReqC_rc5 * irc5
+console.log('wrc5: ' + wrc5)
+var wrc6 = vReqC_rc6 * irc6
+console.log('wrc6: ' + wrc6)
+console.groupEnd()
