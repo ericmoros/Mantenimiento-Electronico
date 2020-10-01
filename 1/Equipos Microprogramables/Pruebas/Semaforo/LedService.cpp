@@ -2,27 +2,35 @@
 
 class LedService {
 private:
-	static const int LED_PIN = 13;
+	static const int LED_PIN = 9;
 
-	static const int TRAFFICLIGHT_RED_LED_PIN = 14;
-	static const int TRAFFICLIGHT_ORANGE_LED_PIN = 15;
-	static const int TRAFFICLIGHT_GREEN_PIN = 16;
+	static const int TRAFFICLIGHT_RED_LED_PIN = 11;
+	static const int TRAFFICLIGHT_ORANGE_LED_PIN = 10;
+	static const int TRAFFICLIGHT_GREEN_PIN = 9;
 
 	const int trafficlightArray[3] = { TRAFFICLIGHT_ORANGE_LED_PIN, TRAFFICLIGHT_RED_LED_PIN, TRAFFICLIGHT_GREEN_PIN };
-	int trafficlightIndex = 0;
+	unsigned int trafficlightIndex = 0;
 
-	void trafficlightSwitch()
+	void trafficlightSwitch(int milliseconds = 300)
 	{
 		int currentLigth = trafficlightArray[trafficlightIndex];
-		digitalWrite(currentLigth, LOW);
-		if (sizeof(trafficlightArray) > trafficlightIndex) trafficlightIndex++;
-		else trafficlightIndex = 0;
-		currentLigth = trafficlightArray[trafficlightIndex];
+		Serial.println(currentLigth);
 		digitalWrite(currentLigth, HIGH);
+		delay(milliseconds);
+		digitalWrite(currentLigth, LOW);
+		if (sizeof(trafficlightArray) > trafficlightIndex) trafficlightIndex = trafficlightIndex + 1;
+		else trafficlightIndex = 0;
 	}
 
 public:
 
+	void configure()
+	{
+		pinMode(LED_PIN, OUTPUT);
+		pinMode(TRAFFICLIGHT_RED_LED_PIN, OUTPUT);
+		pinMode(TRAFFICLIGHT_ORANGE_LED_PIN, OUTPUT);
+		pinMode(TRAFFICLIGHT_GREEN_PIN, OUTPUT);
+	}
 	/*
 	* Makes blink a led
 	*
@@ -30,10 +38,10 @@ public:
 	*/
 	void blink(int milliseconds = 1000)
 	{
+		digitalWrite(LED_PIN, HIGH);
 		delay(milliseconds);
 		digitalWrite(LED_PIN, LOW);
 		delay(milliseconds);
-		digitalWrite(LED_PIN, HIGH);
 	}
 
 	/*
@@ -44,10 +52,7 @@ public:
 	void trafficLight(int milliseconds = 1000)
 	{
 		trafficlightSwitch();
-		delay(milliseconds);
 		trafficlightSwitch();
-		delay(milliseconds);
 		trafficlightSwitch();
-		delay(milliseconds);
 	}
 };
